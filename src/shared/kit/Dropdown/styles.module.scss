@@ -1,0 +1,42 @@
+.dropdown {
+  position: relative;
+
+  width: 100%;
+}
+
+.trigger {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  width: 100%;
+  min-height: 2.5rem;
+
+  border: 1px solid var(--blue-color);
+  border-radius: 0.38rem;
+  padding: 0.5rem 0.75rem;
+  background-color: var(--light-color);
+
+  &:focus,
+  &:active {
+    border-color: #3893ff;
+    
+    & > .svg {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.text {
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--dark-color);
+}
+
+.svg {
+  margin-left: auto;
+  width: 0.625rem;
+  height: 0.375rem;
+  color: var(--dark-blue-color);
+}

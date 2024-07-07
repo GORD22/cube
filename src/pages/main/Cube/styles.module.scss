@@ -1,0 +1,182 @@
+.cubeWrapper {
+  border: 2px solid #42165d;
+  border-radius: 0.31rem;
+  width: 8.12rem;
+  height: 8.12rem;
+  padding: 1.125rem;
+
+  perspective: 62.5rem;
+}
+
+.cube {
+  width: 5.75rem;
+  height: 5.75rem;
+
+  transform-style: preserve-3d;
+  transition: transform 1.5s ease-out;
+
+  & .side1 {
+    transform: translateZ(2.625rem);
+  }
+  & .side2 {
+    transform: rotateX(-180deg) translateZ(2.625rem);
+  }
+  & .side3 {
+    transform: rotateY(90deg) translateZ(2.625rem);
+  }
+  & .side4 {
+    transform: rotateY(-90deg) translateZ(2.625rem);
+  }
+  & .side5 {
+    transform: rotateX(90deg) translateZ(2.625rem);
+  }
+  & .side6 {
+    transform: rotateX(-90deg) translateZ(2.625rem);
+  }
+  &[data-side="1"] {
+    transform: rotateX(360deg) rotateY(360deg) rotateZ(720deg);
+  }
+  &[data-side="2"] {
+    transform: rotateX(360deg) rotateY(540deg) rotateZ(720deg);
+  }
+  &[data-side="3"] {
+    transform: rotateX(360deg) rotateY(630deg) rotateZ(720deg);
+  }
+  &[data-side="4"] {
+    transform: rotateX(360deg) rotateY(450deg) rotateZ(720deg);
+  }
+  &[data-side="5"] {
+    transform: rotateX(630deg) rotateY(360deg) rotateZ(720deg);
+  }
+  &[data-side="6"] {
+    transform: rotateX(450deg) rotateY(360deg) rotateZ(720deg);
+  }
+  &[data-side="1"].reRoll {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+  }
+  &[data-side="2"].reRoll {
+    transform: rotateX(0deg) rotateY(180deg) rotateZ(0deg);
+  }
+  &[data-side="3"].reRoll {
+    transform: rotateX(0deg) rotateY(270deg) rotateZ(0deg);
+  }
+  &[data-side="4"].reRoll {
+    transform: rotateX(0deg) rotateY(90deg) rotateZ(0deg);
+  }
+  &[data-side="5"].reRoll {
+    transform: rotateX(270deg) rotateY(0deg) rotateZ(0deg);
+  }
+  &[data-side="6"].reRoll {
+    transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+  }
+}
+
+.side {
+  position: absolute;
+  display: block;
+
+  background-color: var(--light-color);
+  border-radius: 0.31rem;
+  width: 100%;
+  height: 100%;
+}
+
+.dot {
+  display: block;
+  position: absolute;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 50%;
+  background-color: black;
+  transform: translate(-50%, -50%);
+}
+
+.side1 .dot1 {
+  top: 50%;
+  left: 50%;
+}
+
+.side2 .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.side2 .dot2 {
+  top: 75%;
+  left: 75%;
+}
+
+.side3 .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.side3 .dot2 {
+  top: 75%;
+  left: 75%;
+}
+.side3 .dot3 {
+  top: 50%;
+  left: 50%;
+}
+
+.side4 .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.side4 .dot2 {
+  top: 25%;
+  left: 75%;
+}
+.side4 .dot3 {
+  top: 75%;
+  left: 25%;
+}
+.side4 .dot4 {
+  top: 75%;
+  left: 75%;
+}
+
+.side5 .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.side5 .dot2 {
+  top: 25%;
+  left: 75%;
+}
+.side5 .dot3 {
+  top: 75%;
+  left: 25%;
+}
+.side5 .dot4 {
+  top: 75%;
+  left: 75%;
+}
+.side5 .dot5 {
+  top: 50%;
+  left: 50%;
+}
+
+.side6 .dot1 {
+  top: 25%;
+  left: 25%;
+}
+.side6 .dot2 {
+  top: 25%;
+  left: 75%;
+}
+.side6 .dot3 {
+  top: 75%;
+  left: 25%;
+}
+.side6 .dot4 {
+  top: 75%;
+  left: 75%;
+}
+.side6 .dot5 {
+  top: 50%;
+  left: 25%;
+}
+.side6 .dot6 {
+  top: 50%;
+  left: 75%;
+}

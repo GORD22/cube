@@ -1,0 +1,34 @@
+.content {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1;
+
+  width: 100%;
+  border: 1px solid #3893ff;
+  border-radius: 0.38rem;
+  background-color: var(--light-color);
+  padding: 0.5rem 0.75rem;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.3s ease;
+
+  &[data-state="open"] {
+    transform: translate(0, 0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.item {
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--dark-color);
+  text-align: start;
+}

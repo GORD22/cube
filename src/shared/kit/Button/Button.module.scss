@@ -1,0 +1,53 @@
+@import "/src/app/styles/mixins/disable-mob-hover";
+
+.button {
+  border: 0;
+  cursor: pointer;
+
+  border-radius: 0.31rem;
+  padding: 0.62rem 1rem;
+
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  color: var(--light-color);
+
+  transition: all 0.3s ease;
+
+  &.blue {
+    border-bottom: 1px solid #9159be;
+    background-color: var(--dark-purple-color);
+
+    @include hover {
+      border-color: #ab69e2;
+      background-color: var(--purple-color);
+    }
+
+    &:active {
+      border-color: #d77400;
+      background-color: var(--orange-color);
+    }
+
+    &[data-active="true"] {
+      border-color: #d77400;
+      background-color: var(--orange-color);
+    }
+  }
+
+  &.orange {
+    border-bottom: 1px solid #55f30a;
+    background-color: var(--dark-green-color);
+
+    @include hover {
+      border-color: #7dff3f;
+      background-color: var(--green-color);
+    }
+
+    &:disabled {
+      border-color: #55f30a;
+      background-color: var(--dark-green-color);
+      opacity: 0.3;
+    }
+  }
+}
