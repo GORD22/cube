@@ -22,4 +22,6 @@ export type TMainState = {
   bettingVariant: TBettingVariant;
   toggleCubeRoll: boolean;
   rate: number;
+  subText: string;
+  text: string;
 };

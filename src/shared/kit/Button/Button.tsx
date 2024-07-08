@@ -3,7 +3,7 @@ import styles from "./Button.module.scss";
 import cn from "classnames";
 
 type TProps = {
-  variant?: "blue" | "orange";
+  variant?: "blue" | "orange" | "transparent";
   active?: boolean
 };
 

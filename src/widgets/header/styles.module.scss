@@ -13,6 +13,26 @@
   color: var(--light-color);
 }
 
+.content {
+  display: flex;
+  align-items: center;
+  column-gap: 0.5rem;
+}
+
 .balance {
   font-weight: 400;
+}
+
+.modal {
+  max-width: 27.12rem;
+  width: 100%;
+}
+
+.input {
+  max-width: 21.12rem;
+  width: 100%;
+}
+
+.error {
+  color: var(--red-color);
 }

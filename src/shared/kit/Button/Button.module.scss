@@ -50,4 +50,13 @@
       opacity: 0.3;
     }
   }
+
+  &.transparent {
+    background-color: transparent;
+    color: var(--dark-blue-color);
+
+    @include hover {
+      color: #cbe1ff;
+    }
+  }
 }

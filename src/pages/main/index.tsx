@@ -9,16 +9,17 @@ import { TBettingVariant, TMainState } from "@/shared/types";
 import cn from "classnames";
 import { useUserState } from "@/shared/model/state/user.state";
 import { summation } from "@/shared/lib/summation";
-import { userAPI } from "@/shared/api/userAPI/user.api";
 
 export const MainPage = () => {
-  const { balance, setBalance } = useUserState();
+  const { isAuth, balance, setBalance } = useUserState();
   const [mainState, setMainState] = useState<TMainState>({
     result: 1,
     isRoll: false,
     bettingVariant: "",
     toggleCubeRoll: false,
     rate: 1,
+    text: "Сделайте ставку",
+    subText: "",
   });
 
   const rollCube = () => {
@@ -29,16 +30,30 @@ export const MainPage = () => {
     setMainState((old) => ({ ...old, result: newResult }));
     setMainState((old) => ({ ...old, isRoll: true }));
     setBalance(balance - mainState.rate);
+    const newBalance = summation(
+      balance - mainState.rate,
+      mainState.rate,
+      mainState.bettingVariant,
+      newResult
+    );
     setTimeout(() => {
       setMainState((old) => ({ ...old, isRoll: false })),
-        setBalance(
-          summation(
-            balance - mainState.rate,
-            mainState.rate,
-            mainState.bettingVariant,
-            newResult
-          )
-        );
+        setBalance(newBalance);
+      setMainState((old) => ({
+        ...old,
+        text: `Результат броска кубика: ${newResult}`,
+      }));
+      if (newBalance === balance - mainState.rate) {
+        setMainState((old) => ({
+          ...old,
+          subText: "Повезет в следующий раз!",
+        }));
+      } else {
+        setMainState((old) => ({
+          ...old,
+          subText: `Вы выиграли ${newBalance - balance + mainState.rate} TND!`,
+        }));
+      }
     }, 1500);
   };
 
@@ -53,14 +68,17 @@ export const MainPage = () => {
     setMainState((old) => ({ ...old, rate: value }));
   };
 
-  const onSubmit = () => {
-    userAPI.login({ login: "", password: "" });
-  };
-
   return (
     <div className={styles.content}>
-      <h1 className={styles.title} onClick={onSubmit}>Сделайте ставку</h1>
-      <div className={styles.bettingBlock}>
+      <div className={styles.titleWrapper}>
+        <h1 className={styles.title}>
+          {isAuth ? mainState.text : "Войдите, чтобы продолжить"}
+        </h1>
+        {mainState.subText && (
+          <h2 className={styles.subTitle}>{mainState.subText}</h2>
+        )}
+      </div>
+      <div className={cn(styles.bettingBlock, !isAuth && styles.blocking)}>
         <Cube
           result={mainState.result}
           toggleCubeRoll={mainState.toggleCubeRoll}
@@ -124,6 +142,7 @@ export const MainPage = () => {
             variant="orange"
             onClick={rollCube}
             disabled={
+              !isAuth ||
               mainState.isRoll ||
               !mainState.bettingVariant ||
               balance < mainState.rate
