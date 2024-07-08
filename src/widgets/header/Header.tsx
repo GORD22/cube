@@ -29,10 +29,10 @@ export const Header = () => {
       setError("");
       await login(data);
       setIsShowAuthModal(false);
+      reset();
     } catch (error) {
       const err = error as Error;
       setError(err.message);
-      reset();
     }
   });
 
@@ -53,7 +53,9 @@ export const Header = () => {
       </div>
       {isShowAuthModal && (
         <Modal
-          onClose={() => setIsShowAuthModal(false)}
+          onClose={() => {
+            setIsShowAuthModal(false), reset();
+          }}
           className={styles.modal}
         >
           <Input
