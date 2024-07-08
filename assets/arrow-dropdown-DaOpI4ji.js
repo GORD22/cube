@@ -1,0 +1,1 @@
+import{r}from"./index-BMx-1EUH.js";const t=o=>r.createElement("svg",{id:"arrow-dropdown",viewBox:"0 0 10 6",fill:"none",xmlns:"http://www.w3.org/2000/svg",...o},r.createElement("path",{d:"M1 1L5 5L9 1",stroke:"currentColor",strokeWidth:1.33333,strokeLinecap:"round",strokeLinejoin:"round"}));export{t as default};
